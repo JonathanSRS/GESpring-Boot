@@ -26,10 +26,13 @@ public class Postagemf {
 	@NotNull
 	@Size(min = 5, max = 255)
 	private String descricao;
+	
 	@Temporal(TemporalType.DATE)
-	private Date lanca = new java.sql.Date(System.currentTimeMillis());
+	//@Column(name = "Data de Lançamento")
+	private Date lanca /*= new java.sql.Date(System.currentTimeMillis())*/;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	//@Column(name = "Data de postagem")
 	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
