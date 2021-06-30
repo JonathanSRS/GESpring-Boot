@@ -10,5 +10,6 @@ public interface RepositorioC extends JpaRepository<Categoria, Long>{
 	
 	public List<Categoria> findAllByGeneroContainingIgnoreCase(String genero);
 	
-	public List<Categoria> findAllByIdContainingIgnoreCase(long id);
+	
+	
 }

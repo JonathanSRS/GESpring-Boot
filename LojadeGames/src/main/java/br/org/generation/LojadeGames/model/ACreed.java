@@ -1,11 +1,15 @@
 package br.org.generation.LojadeGames.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,6 +36,8 @@ public class ACreed {
 	@NotNull
 	private String clasificacao;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data = new java.sql.Date(System.currentTimeMillis());
 	//resp
 	
 	@ManyToOne
@@ -84,6 +90,14 @@ public class ACreed {
 
 	public void setClasificacao(String clasificacao) {
 		this.clasificacao = clasificacao;
+	}
+	
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public Categoria getCategoria() {

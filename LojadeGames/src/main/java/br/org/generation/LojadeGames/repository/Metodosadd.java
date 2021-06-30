@@ -8,8 +8,7 @@ import br.org.generation.LojadeGames.model.ACreed;
 
 public interface Metodosadd extends JpaRepository<ACreed, Long>{
 	
-	public List<ACreed> findAllByNomeGContainingIgnoreCase(String nome);
-	public List<ACreed> findAllByIdContainingIgnoreCase(long id);
+	public List<ACreed> findAllByNomeGContainingIgnoreCase(String nomeG);
 						
 	
 }

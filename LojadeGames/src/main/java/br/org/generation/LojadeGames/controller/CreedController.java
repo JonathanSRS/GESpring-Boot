@@ -37,15 +37,12 @@ public class CreedController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
+	//======================================================================
 	@GetMapping("/nomeG/{nomeG}")
-	public ResponseEntity<List<ACreed>> GetByNomeG(String nomeG){
+	public ResponseEntity<List<ACreed>> GetByNomeG(@PathVariable String nomeG){
 		return ResponseEntity.ok(ac.findAllByNomeGContainingIgnoreCase(nomeG));
 	}
-	
-	@GetMapping("/id/{id}")
-	public ResponseEntity<List<ACreed>> GetByIdd(long id){
-		return ResponseEntity.ok(ac.findAllByIdContainingIgnoreCase(id));
-	}
+	//======================================================================
 	
 	@PostMapping
 	public ResponseEntity<ACreed> cadastrar(@RequestBody ACreed post){
