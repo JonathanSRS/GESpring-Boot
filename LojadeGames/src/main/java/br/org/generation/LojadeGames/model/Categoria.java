@@ -21,8 +21,11 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
+	
 	private String genero;
+	
+	@NotNull
+	private String tipo;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL )
 	@JsonIgnoreProperties("categoria")
@@ -42,6 +45,16 @@ public class Categoria {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public List<ACreed> getAc() {
