@@ -43,6 +43,10 @@ public class ACreed {
 	@ManyToOne
 	@JsonIgnoreProperties("acreed")
 	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("acreed")
+	private Gamers gamers;
 
 	public long getId() {
 		return id;
@@ -106,6 +110,14 @@ public class ACreed {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Gamers getGamers() {
+		return gamers;
+	}
+
+	public void setGamers(Gamers gamers) {
+		this.gamers = gamers;
 	}
 	
 	
