@@ -58,6 +58,7 @@ public class GamerServico {
 			
 			usuario.get().setToken(authHeader);
 			usuario.get().setNome(gamers.get().getNome());
+			usuario.get().setSenha(gamers.get().getSenha());
 			return usuario;
 			}
 		}
