@@ -25,26 +25,45 @@ public class UsuarioRepositorioTeste {
 	@BeforeAll
 	void start() {
 		Usuario teste1 = new Usuario(0L, "Fred Flintstone", "fred@bedrock.com", "12548920");
-		if(metodos.findByUsuario(teste1.getUsuario()) == null)
+		if(metodos.findFirstByNome(teste1.getUsuario()) == null)
 			metodos.save(teste1);
 		
-		teste1 = new Usuario(0L, "Betty Rubble", "betty@bedrock.com", "65897100");
-		if(metodos.findByUsuario(teste1.getUsuario()) == null)
+		/*teste1 = new Usuario(0L, "Betty Rubble", "betty@bedrock.com", "65897100");
+		if(metodos.findByUsuarioEmail(teste1.getUsuario()) == null)
 			metodos.save(teste1);		
 		
 		teste1 = new Usuario(0L, "Gazoo", "gazoo@marte.com", "65897100");
-		if(metodos.findByUsuario(teste1.getUsuario()) == null)
+		if(metodos.findByUsuarioEmail(teste1.getUsuario()) == null)
 			metodos.save(teste1);
 		
 		teste1 = new Usuario(0L, "MrSlate", "slate@bedrock.com", "65897100");
-		if(metodos.findByUsuario(teste1.getUsuario()) == null)
+		if(metodos.findByUsuarioEmail(teste1.getUsuario()) == null)
+			metodos.save(teste1);*/
+		
+		teste1 = new Usuario(0L, "MrSlate", "slate@bedrock.com", "65897100");
+		if(metodos.findFirstByNome(teste1.getNome()) == null)
+			metodos.save(teste1);
+		
+		
+		teste1 = new Usuario(0L, "Wilma Flintstone", "wilma@bedrock.com", "65897100");
+		if(metodos.findFirstByNome(teste1.getNome()) == null)
+			metodos.save(teste1);
+		
+		teste1 = new Usuario(0L, "Pedritta Flintstone", "pedritta@bedrock.com", "65897100");
+		if(metodos.findFirstByNome(teste1.getNome()) == null)
 			metodos.save(teste1);
 	}
 	
+	/*@Test
+	public void findByUsuarioRetornaUsuario() throws Exception {
+		Usuario teste1 = metodos.findByUsuarioEmail("slate@bedrock.com");
+		assertTrue(teste1.getUsuario().equals("slate@bedrock.com"));
+	}*/
+	
 	@Test
-	public void findFirstByNome() throws Exception {
+	public void findFirstNomeRetornaNome() throws Exception {
 		Usuario teste1 = metodos.findFirstByNome("MrSlate");
-		assertTrue(teste1.getNome().equals("MrSlane"));
+		assertTrue(teste1.getNome().equals("MrSlate"));
 	}
 	
 	@Test

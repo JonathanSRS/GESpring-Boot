@@ -13,6 +13,7 @@ import br.org.generation.blogfilmes.model.Usuario;
 public interface MetodosUsuario extends JpaRepository<Usuario, Long> {
 	
 	public Optional<Usuario> findByUsuario(String usuario);
+	//public Usuario findByUsuarioEmail(String usuario);
 	public Usuario findFirstByNome(String nome);
 	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
