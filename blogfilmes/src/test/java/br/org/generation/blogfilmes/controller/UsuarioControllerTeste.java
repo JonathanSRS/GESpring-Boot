@@ -3,6 +3,7 @@ package br.org.generation.blogfilmes.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,41 +23,54 @@ import br.org.generation.blogfilmes.model.Usuario;
 public class UsuarioControllerTeste {
 	
 	@Autowired
-	private TestRestTemplate passe;
+	private TestRestTemplate testRestTemplate;
 	
 	private Usuario usuario;
 	
 	private Usuario usuarioAtualize;
 	
-	//Usuario teste = new Usuario(2L, "Administrador", "admin@email.com.br", "admin123");
+	
 
 	@BeforeAll
 	public void start() {
-		usuario = new Usuario(0L, "admin", "admin@admin.com", "admin123");
-		usuarioAtualize = new Usuario(5L, "novoadmin", "novoadmin@admin.com", "admin456");
+		//usuario = new Usuario(2L, "Administrador", "admin@email.com.br", "admin123");
+		usuario = new Usuario(0L, "Pedritta Flintstone", "pedritta@bedrock.com", "65897100");
+		usuarioAtualize = new Usuario(2L, "Pedritta Flintstone", "novoadmin@admin.com", "admin3456");
 	}
 	
+	@Disabled
 	@Test
 	@DisplayName("✏")
 	public void realizarPostUsuario() {
 		
 		HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuario);
-		ResponseEntity<Usuario> resposta = passe.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
+		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
 		assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
 	}
 	
+	@Disabled
 	@Test
 	@DisplayName("📖")
 	public void mostrarTodosUsuarios() {
-		ResponseEntity<String> resposta = passe.withBasicAuth("admin@admin.com", "admin123").exchange("/usuarios/all", HttpMethod.GET, null, String.class);
+		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("admin@admin.com", "admin123").exchange("/usuarios/all", HttpMethod.GET, null, String.class);
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 	}
 	
+	//@Disabled
 	@Test
 	@DisplayName("👨‍💻")
 	public void realizarPutUsuario() {
 		HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuarioAtualize);
-		ResponseEntity<Usuario> resposta = passe.withBasicAuth("admin@admin.com", "admin123").exchange("/usuarios/alterar", HttpMethod.PUT, request, Usuario.class);
+		ResponseEntity<Usuario> resposta = testRestTemplate.withBasicAuth("admin@admin.com", "admin123").exchange("/usuarios/alterar", HttpMethod.PUT, request, Usuario.class);
+		//testRestTemplate.withBasicAuth("admin@admin.com", "admin123").exchange("/usuarios/alterar", HttpMethod.PUT, request, Usuario.class);
+		assertEquals(HttpStatus.OK, resposta.getStatusCode());
+	}
+	
+	@Disabled
+	@Test
+	@DisplayName("🗑")
+	public void realizarDeleteUsuarios() {
+		ResponseEntity<String> resposta = testRestTemplate.exchange("/usuarios/2", HttpMethod.DELETE, null, String.class);
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 	}
 	
